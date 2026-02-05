@@ -11,32 +11,24 @@ import java.util.List;
 
 public interface SupplyItemRepository extends JpaRepository<SupplyItem, Long> {
 
-    // Отчёт за период по поставщикам и продуктам
     @Query("SELECT " +
-           "s.supplier AS supplier, " +
+           "CAST(s.supplier AS string) AS supplierId, " +
+           "CAST(s.supplier AS string) AS supplierName, " +
+           "si.product.id AS productId, " +
            "si.product.name AS productName, " +
+           "s.warehouse.id AS warehouseId, " +
+           "s.warehouse.name AS warehouseName, " +
            "SUM(si.weightKg) AS totalWeight, " +
            "SUM(si.totalPrice) AS totalPrice " +
            "FROM SupplyItem si " +
            "JOIN si.supply s " +
            "WHERE s.supplyDate BETWEEN :from AND :to " +
-           "GROUP BY s.supplier, si.product.name " +
-           "ORDER BY s.supplier, si.product.name")
+           "AND s.warehouse.buyer.id = :buyerId " +
+           "GROUP BY s.supplier, si.product.id, si.product.name, s.warehouse.id, s.warehouse.name " +
+           "ORDER BY s.supplier, si.product.name, s.warehouse.name")
     List<SupplyReportRow> getReport(
             @Param("from") LocalDate from,
-            @Param("to") LocalDate to
+            @Param("to") LocalDate to,
+            @Param("buyerId") Long buyerId
     );
-    /*
-    SELECT
-    s.supplier AS supplier,
-    p.name AS productName,
-    SUM(si.weight_kg) AS totalWeight,
-    SUM(si.total_price) AS totalPrice
-    FROM supply_items si
-    JOIN supplies s ON si.supply_id = s.id
-    JOIN products p ON si.product_id = p.id
-    WHERE s.supply_date BETWEEN '2026-01-01' AND '2026-01-31'
-    GROUP BY s.supplier, p.name
-    ORDER BY s.supplier, p.name;
-     */
 }
