@@ -49,8 +49,7 @@ public class User implements UserDetails {
     @Schema(description = "Поставщик, которого представляет пользователь (только для SUPPLIER)")
     private SupplierEnum supplier;
 
-    // --- UserDetails ---
-    @Override
+   @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singleton(() -> "ROLE_" + role.name());
     }

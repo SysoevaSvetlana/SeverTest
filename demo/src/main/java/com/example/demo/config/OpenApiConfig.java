@@ -2,7 +2,7 @@ package com.example.demo.config;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
-import io.swagger.v3.oas.annotations.info.Contact;
+
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
@@ -33,11 +33,8 @@ import org.springframework.context.annotation.Configuration;
                         1. Зарегистрируйтесь через POST /api/auth/register
                         2. Войдите через POST /api/auth/login и получите токен
                         3. Нажмите кнопку "Authorize" и введите токен в формате: Bearer <ваш_токен>
-                        """,
-                contact = @Contact(
-                        name = "API Support",
-                        email = "support@example.com"
-                )
+                        """
+                
         ),
         servers = {
                 @Server(url = "http://localhost:8080", description = "Local server")

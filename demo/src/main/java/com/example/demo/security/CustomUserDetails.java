@@ -1,5 +1,7 @@
 package com.example.demo.security;
 
+import com.example.demo.model.Role;
+import com.example.demo.model.SupplierEnum;
 import com.example.demo.model.User;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,6 +21,8 @@ public class CustomUserDetails implements UserDetails {
         return List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole().name()));
     }
 
+
+
     @Override
     public String getPassword() { return user.getPassword(); }
 
@@ -36,4 +40,16 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() { return true; }
+
+    public Role getRole() {
+        return user.getRole();
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public SupplierEnum getSupplier() {
+        return user.getSupplier();
+    }
 }

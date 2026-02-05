@@ -11,6 +11,7 @@ import com.example.demo.repository.ProductRepository;
 import com.example.demo.repository.SupplierPriceRepository;
 import com.example.demo.repository.SupplyRepository;
 import com.example.demo.repository.WarehouseRepository;
+import com.example.demo.repository.WarehouseStockRepository;
 import com.example.demo.security.CustomUserDetails;
 import com.example.demo.utils.SecurityUtils;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +33,7 @@ public class SupplyService {
     private final WarehouseRepository warehouseRepository;
     private final SupplierPriceRepository priceRepository;
     private final ProductRepository productRepository;
+    private final WarehouseStockRepository warehouseStockRepository;
 
     @PreAuthorize("hasRole('BUYER')")
     public SupplyDto createSupply(CreateSupplyRequest request) {
@@ -77,7 +79,26 @@ public class SupplyService {
 
         supply.setItems(items);
 
-        return SupplyDto.from(supplyRepository.save(supply));
+        Supply savedSupply = supplyRepository.save(supply);
+
+        for (SupplyItem item : savedSupply.getItems()) {
+            updateWarehouseStock(warehouse, item.getProduct(), item.getWeightKg());
+        }
+
+        return SupplyDto.from(savedSupply);
+    }
+
+    private void updateWarehouseStock(Warehouse warehouse, Product product, java.math.BigDecimal weightKg) {
+        WarehouseStock stock = warehouseStockRepository
+                .findByWarehouseAndProduct(warehouse.getId(), product.getId())
+                .orElse(WarehouseStock.builder()
+                        .warehouse(warehouse)
+                        .product(product)
+                        .quantityKg(java.math.BigDecimal.ZERO)
+                        .build());
+
+        stock.setQuantityKg(stock.getQuantityKg().add(weightKg));
+        warehouseStockRepository.save(stock);
     }
 
 
