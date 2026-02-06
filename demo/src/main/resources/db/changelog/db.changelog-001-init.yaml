@@ -1,7 +1,7 @@
 databaseChangeLog:
   - changeSet:
       id: 001-create-tables
-
+      author: sysoeva
       changes:
         - createTable:
             tableName: users
