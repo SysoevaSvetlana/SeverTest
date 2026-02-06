@@ -1,7 +1,7 @@
 databaseChangeLog:
   - changeSet:
       id: 003-create-warehouse-stocks-table
-      author: system
+      author: sysoeva
       changes:
         - createTable:
             tableName: warehouse_stocks

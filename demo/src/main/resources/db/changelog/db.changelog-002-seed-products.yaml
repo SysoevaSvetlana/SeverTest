@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-insert-products
+      author: sysoeva
+      changes:
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Красное яблоко"
+              - column:
+                  name: category
+                  value: "APPLE"
+
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Зеленое яблоко"
+              - column:
+                  name: category
+                  value: "APPLE"
+
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Конференцная груша"
+              - column:
+                  name: category
+                  value: "PEAR"
+
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: name
+                  value: "Бартлетт"
+              - column:
+                  name: category
+                  value: "PEAR"

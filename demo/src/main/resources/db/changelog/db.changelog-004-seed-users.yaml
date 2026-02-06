@@ -1,0 +1,71 @@
+databaseChangeLog:
+  - changeSet:
+      id: 004-insert-users
+      author: sysoeva
+
+      changes:
+        # Покупатель
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: email
+                  value: "buyer@example.com"
+              - column:
+                  name: password
+                  value: "$2a$10$BzLxgDCLIh6t4SO88UjoS.vznLAwsJBgkBtTEOqdY7r.A2RWDKAMa"  # password123
+              - column:
+                  name: role
+                  value: "BUYER"
+              - column:
+                  name: supplier
+                  value: null
+
+        # Поставщики
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: email
+                  value: "supplier_a@example.com"
+              - column:
+                  name: password
+                  value: "$2a$10$BzLxgDCLIh6t4SO88UjoS.vznLAwsJBgkBtTEOqdY7r.A2RWDKAMa"  # password123
+              - column:
+                  name: role
+                  value: "SUPPLIER"
+              - column:
+                  name: supplier
+                  value: "SUPPLIER_A"
+
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: email
+                  value: "supplier_b@example.com"
+              - column:
+                  name: password
+                  value: "$2a$10$BzLxgDCLIh6t4SO88UjoS.vznLAwsJBgkBtTEOqdY7r.A2RWDKAMa"  # password123
+              - column:
+                  name: role
+                  value: "SUPPLIER"
+              - column:
+                  name: supplier
+                  value: "SUPPLIER_B"
+
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: email
+                  value: "supplier_c@example.com"
+              - column:
+                  name: password
+                  value: "$2a$10$BzLxgDCLIh6t4SO88UjoS.vznLAwsJBgkBtTEOqdY7r.A2RWDKAMa"  # password123
+              - column:
+                  name: role
+                  value: "SUPPLIER"
+              - column:
+                  name: supplier
+                  value: "SUPPLIER_C"

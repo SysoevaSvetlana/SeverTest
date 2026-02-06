@@ -5,3 +5,5 @@ databaseChangeLog:
       file: classpath:db/changelog/db.changelog-002-seed-products.yaml
   - include:
       file: classpath:db/changelog/db.changelog-003-warehouse-stocks.yaml
+  - include:
+      file: classpath:db/changelog/db.changelog-004-seed-users.yaml
