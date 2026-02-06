@@ -3,6 +3,5 @@ databaseChangeLog:
       file: classpath:db/changelog/db.changelog-001-init.yaml
   - include:
       file: classpath:db/changelog/db.changelog-002-seed-products.yaml
-
   - include:
       file: classpath:db/changelog/db.changelog-004-seed-users.yaml

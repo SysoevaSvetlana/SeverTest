@@ -1,7 +1,7 @@
 databaseChangeLog:
   - changeSet:
       id: 004-insert-users
-      author: sysoeva
+      author: svet
 
       changes:
         # Покупатель
@@ -27,7 +27,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: email
-                  value: "supplier_a@example.com"
+                  value: "suppliera@example.com"
               - column:
                   name: password
                   value: "$2a$10$BzLxgDCLIh6t4SO88UjoS.vznLAwsJBgkBtTEOqdY7r.A2RWDKAMa"  # password123
@@ -43,7 +43,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: email
-                  value: "supplier_b@example.com"
+                  value: "supplierb@example.com"
               - column:
                   name: password
                   value: "$2a$10$BzLxgDCLIh6t4SO88UjoS.vznLAwsJBgkBtTEOqdY7r.A2RWDKAMa"  # password123
@@ -59,7 +59,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: email
-                  value: "supplier_c@example.com"
+                  value: "supplierc@example.com"
               - column:
                   name: password
                   value: "$2a$10$BzLxgDCLIh6t4SO88UjoS.vznLAwsJBgkBtTEOqdY7r.A2RWDKAMa"  # password123
