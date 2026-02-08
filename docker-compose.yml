@@ -31,7 +31,8 @@ services:
       SPRING_DATASOURCE_PASSWORD: postgres
       SPRING_JPA_HIBERNATE_DDL_AUTO: validate
       SPRING_LIQUIBASE_ENABLED: "true"
-      JWT_SECRET: your-secret-key-change-this-in-production-min-256-bits
+      JWT_SECRET: c2VjdXJlLWhzNTEyLWp3dC1rZXktc3VwZXItbG9uZy1hbmQtc3Ryb25nLTEyMzQ1Njc4OTBhYmNkZWZnaGlqa2xtbm9wcXJzdHV2d3h5eg==
+
       JWT_EXPIRATION: 3600000
     ports:
       - "8080:8080"

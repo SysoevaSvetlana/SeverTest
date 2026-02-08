@@ -1,10 +1,10 @@
 package com.example.demo.dto;
 
+import com.example.demo.model.SupplierEnum;
 import java.math.BigDecimal;
 
 public interface SupplyReportRow {
-    Long getSupplierId();
-    String getSupplierName();
+    SupplierEnum getSupplierName();
 
     Long getProductId();
     String getProductName();

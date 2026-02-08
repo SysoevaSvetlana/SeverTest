@@ -1,5 +1,6 @@
 package com.example.demo.dto;
 
+import com.example.demo.model.SupplierEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -9,7 +10,6 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class SupplyReportRowDto {
 
-    private Long supplierId;
     private String supplierName;
 
     private Long productId;
@@ -25,9 +25,11 @@ public class SupplyReportRowDto {
      * Преобразование из проекции SupplyReportRow (JPQL/Native query)
      */
     public static SupplyReportRowDto from(SupplyReportRow row) {
+        SupplierEnum supplierEnum = row.getSupplierName();
+        String supplierName = supplierEnum == null ? null : supplierEnum.name();
+
         return new SupplyReportRowDto(
-                row.getSupplierId(),
-                row.getSupplierName(),
+                supplierName,
                 row.getProductId(),
                 row.getProductName(),
                 row.getWarehouseId(),
