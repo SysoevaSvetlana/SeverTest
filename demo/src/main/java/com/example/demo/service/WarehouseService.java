@@ -21,12 +21,12 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class WarehouseService {
     private final WarehouseRepository warehouseRepository;
     private final WarehouseStockRepository warehouseStockRepository;
 
     @PreAuthorize("hasRole('BUYER')")
+    @Transactional
     public WarehouseDto createWarehouse(CreateWarehouseRequest request) {
         CustomUserDetails currentUser = SecurityUtils.getCurrentUser();
 

@@ -15,12 +15,12 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
 public class ReportService {
 
     private final SupplyItemRepository supplyItemRepository;
 
     @PreAuthorize("hasRole('BUYER')")
+    @Transactional(readOnly = true)
     public List<SupplyReportRowDto> getSupplyReport(LocalDate from, LocalDate to) {
         CustomUserDetails currentUser = SecurityUtils.getCurrentUser();
 

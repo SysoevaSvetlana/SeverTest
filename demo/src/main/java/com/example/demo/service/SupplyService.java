@@ -26,7 +26,6 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class SupplyService {
 
     private final SupplyRepository supplyRepository;
@@ -36,6 +35,7 @@ public class SupplyService {
     private final WarehouseStockRepository warehouseStockRepository;
 
     @PreAuthorize("hasRole('BUYER')")
+    @Transactional
     public SupplyDto createSupply(CreateSupplyRequest request) {
         CustomUserDetails currentUser = SecurityUtils.getCurrentUser();
 

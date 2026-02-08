@@ -21,13 +21,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class SupplierPriceService {
 
     private final SupplierPriceRepository priceRepository;
     private final ProductRepository productRepository;
 
     @PreAuthorize("hasRole('SUPPLIER')")
+    @Transactional
     public SupplierPriceDto createPrice(CreateSupplierPriceRequest request) {
         CustomUserDetails currentUser = SecurityUtils.getCurrentUser();
 
@@ -56,6 +56,7 @@ public class SupplierPriceService {
     }
 
     @PreAuthorize("hasRole('SUPPLIER')")
+    @Transactional
     public SupplierPriceDto updatePrice(Long priceId, UpdateSupplierPriceRequest request) {
         CustomUserDetails currentUser = SecurityUtils.getCurrentUser();
 
@@ -86,6 +87,7 @@ public class SupplierPriceService {
     }
 
     @PreAuthorize("hasRole('SUPPLIER')")
+    @Transactional
     public void deletePrice(Long priceId) {
         CustomUserDetails currentUser = SecurityUtils.getCurrentUser();
 
